@@ -1,6 +1,9 @@
 package utilities;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
 
@@ -24,9 +27,9 @@ public class Waits {
 		fWaits = new FluentWait<>(driver)
 				.withTimeout(Duration.ofSeconds(waitingTime))
 				.pollingEvery(Duration.ofSeconds(2))
-				.ignoring(NoSuchElementException.class)
-				.ignoring(InvalidArgumentException.class)
-				.ignoring(NoSuchWindowException.class);
+				.ignoring(NoSuchElementException.class);
+//				.ignoring(InvalidArgumentException.class)
+//				.ignoring(NoSuchWindowException.class);
 		return fWaits;
 	}
 

@@ -1,5 +1,6 @@
 package base;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import utilities.ConfigFileReader;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +37,14 @@ public class Browser {
 				//options.addArguments("--disable-notifications");
 				//options.addArguments("-–disable-popup-blocking");
 
+				//To set a Page Load Strategy {NORMAL, EAGER & NONE}
+				options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+
+				//To set chrome language on english
 				options.addArguments("--lang=en-US");
+
+				//To implement a Chrome extension for block adds
+				options.addExtensions(new File(System.getProperty("user.dir") + "\\config\\uBlock-Origin.crx"));
 
 				//To avoid windows, notifications and autofill in Chrome
 				Map<String, Object> prefs = new HashMap<String, Object>();
@@ -58,7 +67,8 @@ public class Browser {
 				throw new Exception("[ERROR] - Incorrect Browser");
 		}
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 		driver.get(ConfigFileReader.getConfigValueFromPropertyFile("URL"));
 		return driver;
 	}
