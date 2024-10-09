@@ -38,7 +38,7 @@ public class Browser {
 				//options.addArguments("-–disable-popup-blocking");
 
 				//To set a Page Load Strategy {NORMAL, EAGER & NONE}
-				options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+				//options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
 				//To set chrome language on english
 				options.addArguments("--lang=en-US");
