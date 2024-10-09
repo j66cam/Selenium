@@ -17,7 +17,7 @@ public class Browser {
 
 	public static WebDriver startBrowser() throws Exception {
 
-		switch (ConfigFileReader.getConfigValue("BROWSER")) {
+		switch (ConfigFileReader.getConfigValueFromPropertyFile("BROWSER")) {
 
 			case "chrome":
 				ChromeOptions options = new ChromeOptions();
@@ -59,7 +59,7 @@ public class Browser {
 		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		driver.get(ConfigFileReader.getConfigValue("URL"));
+		driver.get(ConfigFileReader.getConfigValueFromPropertyFile("URL"));
 		return driver;
 	}
 
