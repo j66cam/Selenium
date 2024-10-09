@@ -14,8 +14,8 @@ import static org.junit.Assert.assertEquals;
 public class TextBox {
 	private TextBox_Page textBox_page;
 
-	@Given("That the user is on the Elements page")
-	public void thatTheUserIsOnTheElementsPage() throws Exception {
+	@Given("That the user is on the Text Box page")
+	public void thatTheUserIsOnTheTextBoxPage() throws Exception {
 		WebDriver driver = Browser.startBrowser();
 		Home_Page home = new Home_Page(driver);
 		textBox_page = new TextBox_Page(driver);

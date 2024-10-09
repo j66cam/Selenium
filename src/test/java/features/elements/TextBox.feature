@@ -4,7 +4,7 @@ Feature: Test entry
   I want to test the functionality to insert text in text fields.
 
   Scenario Outline: Add text in different fields and validate data insertion
-    Given That the user is on the Elements page
+    Given That the user is on the Text Box page
     When  The user fills in the text fields with "<Full Name>", "<Email>","<Current Address>" and "<Permanent Address>"
     And   The user clicks on the submit button
     Then  The user validates that "<Full Name>", "<Email>","<Current Address>" and "<Permanent Address>" appear in a new section
