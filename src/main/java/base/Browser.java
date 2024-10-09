@@ -1,6 +1,5 @@
 package base;
 
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -47,7 +46,7 @@ public class Browser {
 				options.addExtensions(new File(System.getProperty("user.dir") + "\\config\\uBlock-Origin.crx"));
 
 				//To avoid windows, notifications and autofill in Chrome
-				Map<String, Object> prefs = new HashMap<String, Object>();
+				Map<String, Object> prefs = new HashMap<>();
 				prefs.put("profile.default_content_setting_values.notifications", 2);
 				prefs.put("autofill.profile_enabled", false);
 				options.setExperimentalOption("prefs", prefs);
