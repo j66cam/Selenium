@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 		plugin = {"html:target/cucumber.html"},                     // For a more friendly cucumber report
 		dryRun = false,                                             // To check whether all feature file steps have corresponding step definitions
 		monochrome = false,                                         // if we want console output from Cucumber in a readable format
-		tags = "@"
+		tags = "@"                                                  // If we would like to execute the tests by tags in the terminal (mvn test), we must comment this line
 )
 
 public class TestRunner {
