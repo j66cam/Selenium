@@ -37,7 +37,7 @@ pipeline {
                 // Generar el reporte de Cucumber
                 bat 'mvn surefire-report:report'
             }
-            post {
+            /* post {
                 always {
                     // Publicar reportes en Jenkins (adaptar si usas otro plugin)
                     publishHTML(target: [
@@ -49,7 +49,7 @@ pipeline {
                         allowMissing: false
                     ])
                 }
-            }
+            } */
         }
     }
 
