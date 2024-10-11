@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'Maven3' // Asegúrate de que Jenkins tenga configurado Maven
-        jdk 'JDK11'   // Asegúrate de que Jenkins tenga configurado JDK
+        jdk 'JDK21'   // Asegúrate de que Jenkins tenga configurado JDK
     }
 
     environment {
