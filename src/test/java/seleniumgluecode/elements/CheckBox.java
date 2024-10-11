@@ -18,7 +18,9 @@ public class CheckBox {
 		WebDriver driver = Browser.startBrowser();
 		Home_Page home = new Home_Page(driver);
 		checkBox_page = new CheckBox_Page(driver);
+		Thread.sleep(5000);
 		home.goToPage(Home_Page.elements);
+		Thread.sleep(5000);
 		checkBox_page.clickCheckBoxTab();
 	}
 

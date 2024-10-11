@@ -24,7 +24,7 @@ public class Browser {
 				ChromeOptions options = new ChromeOptions();
 
 				//For Headless Execution
-				//options.addArguments("--headless", "--disable-gpu");
+				options.addArguments("--headless", "--disable-gpu");
 
 				//To deactivate the info bar
 				//options.addArguments("--disable-infobars");
