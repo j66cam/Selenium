@@ -21,21 +21,21 @@ pipeline {
         stage('Build') {
             steps {
                 // Limpiar y compilar el proyecto
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Ejecutar las pruebas de Cucumber
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Report') {
             steps {
                 // Generar el reporte de Cucumber
-                sh 'mvn surefire-report:report'
+                bat 'mvn surefire-report:report'
             }
             post {
                 always {
