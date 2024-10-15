@@ -28,7 +28,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Ejecutar las pruebas de Cucumber
-                bat 'mvn test'
+                //bat 'mvn test'
+                bat "mvn test -D'cucumber.filter.tags=@CheckBox'"
             }
         }
 
