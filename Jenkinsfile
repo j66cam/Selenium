@@ -29,26 +29,18 @@ pipeline {
                 bat "mvn test -Dcucumber.filter.tags=@CheckBox"
             }
         }
-
-        stage('Report') {
-             post {
-                always {
-                    // Publicar reportes en Jenkins
-                    publishHTML(target: [
-                        reportName : 'Cucumber Report',
-                        reportDir  : 'target',
-                        reportFiles: 'cucumber.html',
-                        keepAll    : true,
-                        alwaysLinkToLastBuild: true,
-                        allowMissing: false
-                    ])
-                }
-            }
-        }
     }
 
     post {
         always {
+            publishHTML(target: [
+                reportName : 'Cucumber Report',
+                reportDir  : 'target',
+                reportFiles: 'cucumber.html',
+                keepAll    : true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: false
+            ])
             // Limpia el workspace al final
             cleanWs()
         }
