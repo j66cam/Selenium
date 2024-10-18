@@ -30,25 +30,21 @@ pipeline {
             }
         }
 
-        /* stage('Report') {
-            steps {
-                // Generar el reporte de Cucumber
-                bat 'mvn surefire-report:report'
-            }
+        stage('Report') {
              post {
                 always {
                     // Publicar reportes en Jenkins
                     publishHTML(target: [
                         reportName : 'Cucumber Report',
-                        reportDir  : 'target/surefire-reports',
-                        reportFiles: 'index.html',
+                        reportDir  : 'target',
+                        reportFiles: 'cucumber.html',
                         keepAll    : true,
                         alwaysLinkToLastBuild: true,
                         allowMissing: false
                     ])
                 }
             }
-        } */
+        }
     }
 
     post {
