@@ -33,14 +33,13 @@ pipeline {
 
     post {
         always {
-            publishHTML(target: [
-                reportName : 'Cucumber Report',
-                reportDir  : 'target',
-                reportFiles: 'cucumber.html',
-                keepAll    : true,
-                alwaysLinkToLastBuild: true,
-                allowMissing: false
-            ])
+            publishHTML (target : [allowMissing: false,
+             alwaysLinkToLastBuild: true,
+             keepAll: true,
+             reportDir: 'reports',
+             reportFiles: 'myreport.html',
+             reportName: 'My Reports',
+             reportTitles: 'The Report'])
             // Limpia el workspace al final
             cleanWs()
         }
