@@ -36,8 +36,8 @@ pipeline {
             publishHTML (target : [allowMissing: false,
              alwaysLinkToLastBuild: true,
              keepAll: true,
-             reportDir: 'reports',
-             reportFiles: 'myreport.html',
+             reportDir: 'target',
+             reportFiles: 'cucumber.html',
              reportName: 'My Reports',
              reportTitles: 'The Report'])
             // Limpia el workspace al final
