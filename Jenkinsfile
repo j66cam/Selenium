@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3' // Asegúrate de que Jenkins tenga configurado Maven
-        jdk 'JDK21'   // Asegúrate de que Jenkins tenga configurado JDK
+        maven 'Maven3'
+        jdk 'JDK21'
     }
 
     environment {
@@ -13,23 +13,20 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clonar el repositorio desde Git
                 git branch: 'master', url: 'https://github.com/j66cam/Selenium.git'
             }
         }
 
         stage('Build') {
             steps {
-                // Limpiar y compilar el proyecto
                 bat 'mvn clean compile'
             }
         }
 
         stage('Run Tests') {
             steps {
-                // Ejecutar las pruebas de Cucumber
-                //bat 'mvn test'
-                bat "mvn test -D'cucumber.filter.tags=@CheckBox'"
+                bat 'mvn test'
+                //bat "mvn test -D'cucumber.filter.tags=@CheckBox'"
             }
         }
 
@@ -40,7 +37,7 @@ pipeline {
             }
              post {
                 always {
-                    // Publicar reportes en Jenkins (adaptar si usas otro plugin)
+                    // Publicar reportes en Jenkins
                     publishHTML(target: [
                         reportName : 'Cucumber Report',
                         reportDir  : 'target/surefire-reports',
@@ -56,7 +53,7 @@ pipeline {
 
     post {
         always {
-            // Limpiar workspace al final
+            // Limpia el workspace al final
             cleanWs()
         }
     }
