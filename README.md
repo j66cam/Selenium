@@ -12,4 +12,4 @@ To generate the Cluecumber report with the result of the execution, we copy the 
   mvn clean verify test -D'cucumber.filter.tags=@CheckBox'
 ```
 
-The generated report `index.html` will be located in the following path: `target/cluecumber-report/`
+The generated report `index.html` will be located in the following path: `target/generated-report/`
