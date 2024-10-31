@@ -1,0 +1,9 @@
+<configuration>
+    <encoding>UTF-8</encoding>
+    <protocol>https</protocol>
+    <title>Automation Test Report</title>
+    <reportName>Test Report</reportName>
+    <theme>standard</theme>
+    <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+    <documentTitle>Test Automation Report</documentTitle>
+</configuration>
