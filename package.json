@@ -1,0 +1,23 @@
+{
+  "name": "selenium",
+  "version": "1.0.0",
+  "description": "Repository with all the best practices I've seen for Selenium, TestNG, JUnit, Cucumber, etc",
+  "main": "index.js",
+  "scripts": {
+    "report": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j66cam/Selenium.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j66cam/Selenium/issues"
+  },
+  "homepage": "https://github.com/j66cam/Selenium#readme",
+  "devDependencies": {
+    "multiple-cucumber-html-reporter": "^3.8.0"
+  }
+}
