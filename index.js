@@ -1,12 +1,12 @@
 const report = require("multiple-cucumber-html-reporter");
 const fs = require('fs');
 
-// Leer los tiempos del archivo
+// Read the file times
 let executionTimes = {};
 try {
     executionTimes = JSON.parse(fs.readFileSync('target/execution_times.json', 'utf8'));
 } catch (error) {
-    console.log('No se pudieron leer los tiempos de ejecución');
+    console.log('Could not read run times');
 }
 
 report.generate({
@@ -29,7 +29,7 @@ report.generate({
     },
   },
   customData: {
-    title: "Run Information",
+    title: "Run Info",
     data: [
       {label: 'Account', value: 'AccountName'},
       {label: 'Project', value: 'ProjectName'},

@@ -49,12 +49,12 @@ public class TimeManager {
 
 			Duration duration = Duration.between(startDate, endDate);
 
-			long horas = duration.toHours();
-			long minutos = duration.toMinutesPart();
-			long segundos = duration.toSecondsPart();
+			long hours = duration.toHours();
+			long minutes = duration.toMinutesPart();
+			long seconds = duration.toSecondsPart();
 
-			String tiempoTotal = String.format("%02d:%02d:%02d", horas, minutos, segundos);
-			times.put("executionTime", tiempoTotal);
+			String totalTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+			times.put("executionTime", totalTime);
 
 			writeTimesToFile(times);
 		} catch (Exception e) {
