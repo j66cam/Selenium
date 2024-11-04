@@ -37,6 +37,7 @@ report.generate({
       {label: 'Environment', value: 'EnvironmentValue'},
       {label: 'Execution Start Time', value: executionTimes.startTime || 'No disponible'},
       {label: 'Execution End Time', value: executionTimes.endTime || 'No disponible'},
+      {label: 'Total Execution Time', value: executionTimes.executionTime || 'No disponible'},
     ],
   },
 });
