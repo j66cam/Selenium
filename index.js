@@ -35,6 +35,7 @@ report.generate({
       {label: 'Project', value: 'ProjectName'},
       {label: 'Release', value: 'ReleaseVersion'},
       {label: 'Environment', value: 'EnvironmentValue'},
+      {label: 'Current Date', value: executionTimes.currentDate || 'No disponible'},
       {label: 'Execution Start Time', value: executionTimes.startTime || 'No disponible'},
       {label: 'Execution End Time', value: executionTimes.endTime || 'No disponible'},
       {label: 'Total Execution Time', value: executionTimes.executionTime || 'No disponible'},

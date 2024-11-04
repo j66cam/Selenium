@@ -10,17 +10,33 @@ import java.time.format.DateTimeFormatter;
 
 public class TimeManager {
 	private static final String TEMP_FILE = "target/execution_times.json";
-	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+	private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
+	private static final DateTimeFormatter FULL_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
 	public static void setStartTime() {
-		String startTime = LocalDateTime.now().format(FORMATTER);
-		writeTimesToFile("startTime", startTime);
+		LocalDateTime now = LocalDateTime.now();
+		JSONObject times = new JSONObject();
+		times.put("currentDate", now.format(DATE_FORMATTER));
+		times.put("startTime", now.format(TIME_FORMATTER));
+		times.put("fullStartTime", now.format(FULL_FORMATTER));
+		writeTimesToFile(times);
 	}
 
 	public static void setEndTime() {
-		String endTime = LocalDateTime.now().format(FORMATTER);
-		writeTimesToFile("endTime", endTime);
-		calculateExecutionTime();
+		try {
+			File file = new File(TEMP_FILE);
+			JSONObject times = new JSONObject(new String(Files.readAllBytes(file.toPath())));
+			LocalDateTime now = LocalDateTime.now();
+
+			times.put("endTime", now.format(TIME_FORMATTER));
+			times.put("fullEndTime", now.format(FULL_FORMATTER));
+
+			writeTimesToFile(times);
+			calculateExecutionTime();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void calculateExecutionTime() {
@@ -28,8 +44,8 @@ public class TimeManager {
 			File file = new File(TEMP_FILE);
 			JSONObject times = new JSONObject(new String(Files.readAllBytes(file.toPath())));
 
-			LocalDateTime startDate = LocalDateTime.parse(times.getString("startTime"), FORMATTER);
-			LocalDateTime endDate = LocalDateTime.parse(times.getString("endTime"), FORMATTER);
+			LocalDateTime startDate = LocalDateTime.parse(times.getString("fullStartTime"), FULL_FORMATTER);
+			LocalDateTime endDate = LocalDateTime.parse(times.getString("fullEndTime"), FULL_FORMATTER);
 
 			Duration duration = Duration.between(startDate, endDate);
 
@@ -40,20 +56,15 @@ public class TimeManager {
 			String tiempoTotal = String.format("%02d:%02d:%02d", horas, minutos, segundos);
 			times.put("executionTime", tiempoTotal);
 
-			Files.write(file.toPath(), times.toString().getBytes());
+			writeTimesToFile(times);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static void writeTimesToFile(String timeType, String timeValue) {
+	private static void writeTimesToFile(JSONObject times) {
 		try {
-			File file = new File(TEMP_FILE);
-			JSONObject times = file.exists() ?
-					new JSONObject(new String(Files.readAllBytes(file.toPath()))) :
-					new JSONObject();
-			times.put(timeType, timeValue);
-			Files.write(file.toPath(), times.toString().getBytes());
+			Files.write(new File(TEMP_FILE).toPath(), times.toString().getBytes());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
