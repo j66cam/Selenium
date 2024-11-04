@@ -1,7 +1,15 @@
 const report = require("multiple-cucumber-html-reporter");
+const fs = require('fs');
+
+// Leer los tiempos del archivo
+let executionTimes = {};
+try {
+    executionTimes = JSON.parse(fs.readFileSync('target/execution_times.json', 'utf8'));
+} catch (error) {
+    console.log('No se pudieron leer los tiempos de ejecución');
+}
 
 report.generate({
-  // Ruta que pusimos en el plugin de TestRunner, donde se almacenan los resultados en un json
   jsonDir: "./target/cucumber_report/",
   reportPath: "./target/cucumber_report/",
   reportName: 'TEST RESULTS',
@@ -27,7 +35,8 @@ report.generate({
       {label: 'Project', value: 'ProjectName'},
       {label: 'Release', value: 'ReleaseVersion'},
       {label: 'Environment', value: 'EnvironmentValue'},
-      {label: 'Execution Start Time', value: new Date().toLocaleString()},
+      {label: 'Execution Start Time', value: executionTimes.startTime || 'No disponible'},
+      {label: 'Execution End Time', value: executionTimes.endTime || 'No disponible'},
     ],
   },
 });

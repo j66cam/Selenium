@@ -4,6 +4,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+import utilities.TimeManager;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -22,6 +23,7 @@ public class TestRunner {
 
 	@AfterClass
 	public static void finish() {
+		TimeManager.setEndTime();
 		try {
 			String[] cmd = {"cmd.exe", "/c", "npm run report"};
 			Runtime.getRuntime().exec(cmd);
