@@ -2,6 +2,7 @@ package runner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -18,4 +19,15 @@ import org.junit.runner.RunWith;
 )
 
 public class TestRunner {
+
+	@AfterClass
+	public static void finish() {
+		try {
+//			String[] cmd = {"cmd.exe", "/c", "cd target && allure generate && allure open"};
+			String[] cmd = {"cmd.exe", "/c", "cd target && allure generate"};
+			Runtime.getRuntime().exec(cmd);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
